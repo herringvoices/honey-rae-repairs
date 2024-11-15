@@ -1,0 +1,34 @@
+table serviceTickets {
+  id int pk
+  userId int [ref: > users.id]
+  description varchar
+  emergency boolean
+  dateCompleted date
+}
+
+table customers {
+  id int pk
+  address varchar
+  phoneNumber varchar
+  userId int [ref: > users.id]
+}
+
+table employeeTickets {
+  id int pk
+  employeeId int [ref: > employees.id]
+  serviceTicketId int [ref: > serviceTickets.id]
+}
+
+table employees {
+  id int pk
+  specialty varchar
+  rate float
+  userId int [ref: > users.id]
+}
+
+table users {
+  id int pk
+  fullName varchar
+  email varchar
+  isStaff boolean
+}
